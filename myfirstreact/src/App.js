@@ -6,7 +6,7 @@ import "./App.css";
 class App extends Component {
   state = {
     counters: [
-      { id: 1, value: 3 },
+      { id: 1, value: 0 },
       { id: 3, value: 0 },
       { id: 4, value: 0 }
     ]
@@ -73,18 +73,18 @@ class App extends Component {
   };
   sortEvent = state => {
     const counters = [...this.state.counters];
-        counters.sort((a, b) => {
-          return a.id - b.id;
-        });
-        this.setState({ counters });
+    counters.sort((a, b) => {
+      return a.id - b.id;
+    });
+    this.setState({ counters });
   };
-  sortValueEvent= state=>{
+  sortValueEvent = state => {
     const counters = [...this.state.counters];
-        counters.sort((a, b) => {
-          return a.value - b.value;
-        });
-        this.setState({ counters });
-  }
+    counters.sort((a, b) => {
+      return b.value - a.value;
+    });
+    this.setState({ counters });
+  };
   render() {
     return (
       <React.Fragment>
@@ -101,6 +101,7 @@ class App extends Component {
             onReset={this.resetEvent}
             onAdd={this.addEvent}
             onSort={this.sortEvent}
+            onSortValue={this.sortValueEvent}
           />
         </main>
       </React.Fragment>
