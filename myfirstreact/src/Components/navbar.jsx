@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 
-const NavBar = ({totalCounters}) => {
+const NavBar = ({totalCounters, totalCountersId}) => {
     return (
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
           Navbar{" "}
           <span className="badge badge-pill badge-secondary m-2">
-            {totalCounters}
+          Položek:{ }{totalCounters}
+          </span>
+          <span className="badge badge-pill badge-secondary m-2">
+          Celkem kusů:{ } {totalCountersId}
           </span>
         </a>
       </nav>

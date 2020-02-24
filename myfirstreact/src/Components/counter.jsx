@@ -11,7 +11,7 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        {/* <img src={this.state.imageUrl} alt="" /> */}
+        <span>Položka č.{this.props.counter.id}</span>{/* <img src={this.state.imageUrl} alt="" /> */}
         <span style={{ width: 70}} className={this.zeroWarning()}>{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm" onClick={()=> this.props.onIncrement(this.props.counter)}>
           +

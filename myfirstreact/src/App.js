@@ -6,7 +6,7 @@ import "./App.css";
 class App extends Component {
   state = {
     counters: [
-      { id: 1, value: 0 },
+      { id: 1, value: 3 },
       { id: 3, value: 0 },
       { id: 4, value: 0 }
     ]
@@ -22,8 +22,10 @@ class App extends Component {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
-    counters[index].value>0?counters[index].value--:console.log("minimum");
-    
+    counters[index].value > 0
+      ? counters[index].value--
+      : console.log("minimum");
+
     this.setState({ counters });
   };
   deleteEvent = counterId => {
@@ -35,8 +37,6 @@ class App extends Component {
       c.value = 0;
       return c;
     });
-    console.log(counters);
-
     this.setState({ counters });
   };
 
@@ -71,11 +71,26 @@ class App extends Component {
 
     this.setState({ counters });
   };
+  sortEvent = state => {
+    const counters = [...this.state.counters];
+        counters.sort((a, b) => {
+          return a.id - b.id;
+        });
+        this.setState({ counters });
+  };
+  sortValueEvent= state=>{
+    const counters = [...this.state.counters];
+        counters.sort((a, b) => {
+          return a.value - b.value;
+        });
+        this.setState({ counters });
+  }
   render() {
     return (
       <React.Fragment>
         <NavBar
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
+          totalCountersId={this.state.counters.reduce((a, b) => a + b.value, 0)}
         />
         <main className="container">
           <Counters
@@ -85,6 +100,7 @@ class App extends Component {
             onDelete={this.deleteEvent}
             onReset={this.resetEvent}
             onAdd={this.addEvent}
+            onSort={this.sortEvent}
           />
         </main>
       </React.Fragment>
