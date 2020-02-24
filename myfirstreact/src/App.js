@@ -18,6 +18,14 @@ class App extends Component {
     counters[index].value++;
     this.setState({ counters });
   };
+  decrEvent = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value>0?counters[index].value--:console.log("minimum");
+    
+    this.setState({ counters });
+  };
   deleteEvent = counterId => {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters });
@@ -73,6 +81,7 @@ class App extends Component {
           <Counters
             counters={this.state.counters}
             onIncrement={this.incrEvent}
+            onDecrement={this.decrEvent}
             onDelete={this.deleteEvent}
             onReset={this.resetEvent}
             onAdd={this.addEvent}
