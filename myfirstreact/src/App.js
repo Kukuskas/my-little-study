@@ -65,7 +65,7 @@ class App extends Component {
             : count.length == count[i + 1].id
             ? count[i + 1].id + 1
             : number;
-        return number !== 0 ? number : regFunc(i + 1);
+        return number !== 0 ? number : (console.log(number), regFunc(i + 1));
       }
     }
 
