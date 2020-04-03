@@ -52,7 +52,7 @@ class App extends Component {
     // }
     function oneAndTwo() {
       return (number =
-        count.length == 0 ? 1 : counters.length == 1 ? 2 : regFunc(0));
+        count.length == 0 ? 1 : counters.length == 1 ? (count[0].id ==1? 2: 1) : regFunc(0));
       function regFunc(i) {
         count.sort((a, b) => {
           return a.id - b.id;
